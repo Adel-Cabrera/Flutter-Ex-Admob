@@ -24,7 +24,7 @@ class _ContadorPageState extends State<ContadorPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Número de clicks: ', style: _estiloTexto),
+            Text('N° de clicks: ', style: _estiloTexto),
             Text(
               '$_conteo',
               style: _estiloTexto,
