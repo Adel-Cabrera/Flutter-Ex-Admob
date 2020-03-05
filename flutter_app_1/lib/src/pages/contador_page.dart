@@ -8,7 +8,7 @@ class ContadorPage extends StatefulWidget {
 class _ContadorPageState extends State<ContadorPage> {
   final _estiloTexto = new TextStyle(fontSize: 25.0);
 
-  int _conteo = 10;
+  int _conteo = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +32,60 @@ class _ContadorPageState extends State<ContadorPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('$_conteo');
-
-          setState(() {
-            _conteo++;
-          });
-        },
-        child: Icon(
-          Icons.add,
-        ),
-      ),
+      floatingActionButton: _crearBotones(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  Widget _crearBotones() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        FloatingActionButton(
+          onPressed: _reset,
+          child: Icon(
+            Icons.exposure_zero,
+          ),
+        ),
+        Expanded(
+          child: SizedBox(
+            width: 5.0,
+          ),
+        ),
+        FloatingActionButton(
+          onPressed: _sustraer,
+          child: Icon(
+            Icons.remove,
+          ),
+        ),
+        SizedBox(
+          width: 5.0,
+        ),
+        FloatingActionButton(
+          onPressed: _agregar,
+          child: Icon(
+            Icons.add,
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _agregar() {
+    setState(() {
+      _conteo++;
+    });
+  }
+
+  void _sustraer() {
+    setState(() {
+      _conteo--;
+    });
+  }
+
+  void _reset() {
+    setState(() {
+      _conteo = 0;
+    });
   }
 }
