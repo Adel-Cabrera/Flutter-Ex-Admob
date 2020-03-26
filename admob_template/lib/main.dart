@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:admobtemplate/src/admob/admob_config.dart';
 import 'package:admobtemplate/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -25,8 +24,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        // When navigating to the "/second" route, build the SecondScreen widget.
+        // TODO CONFIGURAR RUTAS
         '/anotherPage': (context) => SecondRoute(),
       },
       theme: ThemeData(
@@ -35,42 +33,6 @@ class _MyAppState extends State<MyApp> {
       home: HomePage(),
     );
   }
-}
-
-String getAppId() {
-  if (Platform.isIOS) {
-    return 'ca-app-pub-3940256099942544~1458002511';
-  } else if (Platform.isAndroid) {
-    return 'ca-app-pub-3940256099942544~3347511713';
-  }
-  return null;
-}
-
-String getBannerAdUnitId() {
-  if (Platform.isIOS) {
-    return 'ca-app-pub-3940256099942544/2934735716';
-  } else if (Platform.isAndroid) {
-    return 'ca-app-pub-3940256099942544/6300978111';
-  }
-  return null;
-}
-
-String getInterstitialAdUnitId() {
-  if (Platform.isIOS) {
-    return 'ca-app-pub-3940256099942544/4411468910';
-  } else if (Platform.isAndroid) {
-    return 'ca-app-pub-3940256099942544/1033173712';
-  }
-  return null;
-}
-
-String getRewardBasedVideoAdUnitId() {
-  if (Platform.isIOS) {
-    return 'ca-app-pub-3940256099942544/1712485313';
-  } else if (Platform.isAndroid) {
-    return 'ca-app-pub-3940256099942544/5224354917';
-  }
-  return null;
 }
 
 /*
