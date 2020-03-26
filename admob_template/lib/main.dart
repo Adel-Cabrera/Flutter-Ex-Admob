@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 
 import 'package:admob_flutter/admob_flutter.dart';
 
-import 'src/pages/my_admob_page.dart';
+import 'src/pages/second_route.dart';
 
 void main() {
+  //WidgetsFlutterBinding.ensureInitialized();
   Admob.initialize(getAppId());
-
   runApp(MyApp());
 }
 
@@ -80,7 +80,7 @@ import 'package:flutter/material.dart';
 
 import 'package:admob_flutter/admob_flutter.dart';
 
-import 'src/pages/my_admob_page.dart';
+import 'src/pages/second_route.dart';
 
 void main() {
   Admob.initialize(getAppId());

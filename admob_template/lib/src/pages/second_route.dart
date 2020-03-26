@@ -1,4 +1,5 @@
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:admobtemplate/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
@@ -9,19 +10,8 @@ class SecondRoute extends StatefulWidget {
 }
 
 class _SecondRouteState extends State<SecondRoute> {
-  int _counter = 0;
-  /*
-  AdmobInterstitial interstitialAd = AdmobInterstitial(
-    adUnitId: getInterstitialAdUnitId(),
-  );
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    interstitialAd.load();
-  }
-  */
-
+  int counter = HomePage.counter;
+  AdmobInterstitial myInter = HomePage.interstitialAd;
   AdmobBannerSize bannerSize;
   AdmobInterstitial interstitialAd;
   AdmobReward rewardAd;
@@ -29,6 +19,7 @@ class _SecondRouteState extends State<SecondRoute> {
   @override
   void initState() {
     super.initState();
+
     bannerSize = AdmobBannerSize.BANNER;
 
     interstitialAd = AdmobInterstitial(
@@ -45,6 +36,7 @@ class _SecondRouteState extends State<SecondRoute> {
         });
 
     interstitialAd.load();
+
     rewardAd.load();
   }
 
@@ -58,22 +50,25 @@ class _SecondRouteState extends State<SecondRoute> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           RaisedButton(
+            child: Text('Counter $counter'),
             onPressed: () {
               setState(() {
-                _counter += 1;
+                myInter.load();
+                myInter.show();
+                counter++;
               });
             },
-            child: Text(
-              'Counter $_counter',
-            ),
           ),
           RaisedButton(
             child: Text(
               'Intersticial',
             ),
             onPressed: () async {
-              if (await interstitialAd.isLoaded && _counter >= 3) {
+              if (await interstitialAd.isLoaded && counter >= 3) {
                 interstitialAd.show();
+                setState(() {
+                  counter = 0;
+                });
               }
             },
           ),
@@ -99,8 +94,8 @@ class _SecondRouteState extends State<SecondRoute> {
   @override
   void dispose() {
     interstitialAd.dispose();
+
     rewardAd.dispose();
-    _counter = 0;
     super.dispose();
   }
 }
