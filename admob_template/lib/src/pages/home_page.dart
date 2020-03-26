@@ -1,4 +1,7 @@
+import 'package:admob_flutter/admob_flutter.dart';
+import 'package:admobtemplate/src/pages/params.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -8,11 +11,20 @@ class HomePage extends StatelessWidget {
         title: Text('HomePage'),
       ),
       body: Center(
-        child: RaisedButton(
-          child: Text('Home Page'),
-          onPressed: () {
-            Navigator.pushNamed(context, '/anotherPage');
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            RaisedButton(
+              child: Text('Home Page'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/anotherPage');
+              },
+            ),
+            AdmobBanner(
+              adUnitId: Params.getBannerAdUnitId(),
+              adSize: Params.bannerSize,
+            ),
+          ],
         ),
       ),
     );
